@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:SampleService/wsdl" xmlns:ns2="urn:SampleService/types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="SampleService" targetNamespace="urn:SampleService/wsdl">
+  <types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:SampleService/types" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:SampleService/types">
+      <complexType name="sayHello">
+        <sequence/></complexType>
+      <complexType name="sayHelloResponse">
+        <sequence>
+          <element name="result" type="string" nillable="true"/></sequence></complexType>
+      <element name="sayHello" type="tns:sayHello"/>
+      <element name="sayHelloResponse" type="tns:sayHelloResponse"/></schema></types>
+  <message name="SampleServiceSEI_sayHello">
+    <part name="parameters" element="ns2:sayHello"/></message>
+  <message name="SampleServiceSEI_sayHelloResponse">
+    <part name="result" element="ns2:sayHelloResponse"/></message>
+  <portType name="SampleServiceSEI">
+    <operation name="sayHello">
+      <input message="tns:SampleServiceSEI_sayHello"/>
+      <output message="tns:SampleServiceSEI_sayHelloResponse"/></operation></portType>
+  <binding name="SampleServiceSEIBinding" type="tns:SampleServiceSEI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="sayHello">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/></input>
+      <output>
+        <soap:body use="literal"/></output></operation></binding>
+  <service name="SampleService">
+    <port name="SampleServiceSEIPort" binding="tns:SampleServiceSEIBinding">
+      <soap:address location="http://localhost:8081/TestWebService/SampleService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/></port></service></definitions>

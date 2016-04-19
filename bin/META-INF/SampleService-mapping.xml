@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee    http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+<package-mapping>
+<package-type>Preprocessors</package-type>
+<namespaceURI>urn:SampleService/wsdl</namespaceURI>
+</package-mapping>
+<package-mapping>
+<package-type>Preprocessors</package-type>
+<namespaceURI>urn:SampleService/types</namespaceURI>
+</package-mapping>
+<java-xml-type-mapping>
+<java-type>Preprocessors.SayHello</java-type>
+<root-type-qname xmlns:typeNS="urn:SampleService/types">typeNS:sayHello</root-type-qname>
+<qname-scope>complexType</qname-scope>
+</java-xml-type-mapping>
+<java-xml-type-mapping>
+<java-type>Preprocessors.SayHelloResponse</java-type>
+<root-type-qname xmlns:typeNS="urn:SampleService/types">typeNS:sayHelloResponse</root-type-qname>
+<qname-scope>complexType</qname-scope>
+<variable-mapping>
+<java-variable-name>result</java-variable-name>
+<xml-element-name>result</xml-element-name>
+</variable-mapping>
+</java-xml-type-mapping>
+<service-interface-mapping>
+<service-interface>Preprocessors.SampleService</service-interface>
+<wsdl-service-name xmlns:serviceNS="urn:SampleService/wsdl">serviceNS:SampleService</wsdl-service-name>
+<port-mapping>
+<port-name>SampleServiceSEIPort</port-name>
+<java-port-name>SampleServiceSEIPort</java-port-name>
+</port-mapping>
+</service-interface-mapping>
+<service-endpoint-interface-mapping>
+<service-endpoint-interface>Preprocessors.SampleServiceSEI</service-endpoint-interface>
+<wsdl-port-type xmlns:portTypeNS="urn:SampleService/wsdl">portTypeNS:SampleServiceSEI</wsdl-port-type>
+<wsdl-binding xmlns:bindingNS="urn:SampleService/wsdl">bindingNS:SampleServiceSEIBinding</wsdl-binding>
+<service-endpoint-method-mapping>
+<java-method-name>sayHello</java-method-name>
+<wsdl-operation>sayHello</wsdl-operation>
+<wrapped-element/>
+<wsdl-return-value-mapping>
+<method-return-value>java.lang.String</method-return-value>
+<wsdl-message xmlns:wsdlMsgNS="urn:SampleService/wsdl">wsdlMsgNS:SampleServiceSEI_sayHelloResponse</wsdl-message>
+<wsdl-message-part-name>result</wsdl-message-part-name>
+</wsdl-return-value-mapping>
+</service-endpoint-method-mapping>
+</service-endpoint-interface-mapping>
+</java-wsdl-mapping>
