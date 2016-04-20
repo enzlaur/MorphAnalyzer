@@ -22,32 +22,40 @@ public class Main extends JFrame {
         Container c = getContentPane();
         c.setLayout (new FlowLayout());
         
-        analyze = new JButton ("Pindutin mo");
+        analyze = new JButton ("Pindutin mo ako");
         
-        inWord = new JLabel ("Ipasok mo dito");
-        root = new JLabel ("Lalabas dito");
+        inWord = new JLabel ("Lagay-Loob");
+        root = new JLabel ("Lagay-labas");
         input = new JTextField (15);
         output = new JTextField (15);
         c.add (inWord);
         c.add (input);
+        c.add (analyze);
         c.add (root);
         c.add (output);
-        c.add (analyze);
+        
 
-        analyze.addActionListener ( 
+        /*
+         * Included GUI
+         */
+        /*analyze.addActionListener ( 
            new ActionListener () {
    		      public void actionPerformed (ActionEvent e)
    		      {
    		         String root;
-		
-		         root = mpl.analyzeMultipleMod(input.getText()).result;
+   		         	
+		         root = mpl.analyzeMultipleMod(input.getText()).result;		         
 		        // root = analyze(input.getText());
 		         output.setText (root);
    		      }
            }
         );
-        setSize(500, 200);
-        show();
+        setSize(650, 100);
+        show();*/
+        
+        
+        
+        
 /*        while( (wp=training.nextPair()) != null) {
             mpl.extractRule(wp.morphed, wp.root);
         }
@@ -65,17 +73,36 @@ public class Main extends JFrame {
 	}
 */	
 	
+	public void noGUI(String input)
+	{
+		
+		WordPair wp;
+		println("Finding root of: " + input);	
+        String root = ""; 
+        root = mpl.analyzeMultipleMod(input).result;
+        //root = mpl.analyzeMultipleModWithSemantic2(input).result;
+        println("Result is:  " + root);
+	}
+	
 	public static void main(String[] args) throws Exception 
 	{
-		Main m = new Main();
+		/*Main m = new Main();
 		m.addWindowListener( new WindowAdapter() {
 			public void windowClosing (WindowEvent e)
 			{
 				System.exit (0);
 			}
-		});
+		});*/
 		
 		
 //		System.out.println(m.analyze("kinakain"));
+		
+		Main m = new Main();
+		m.noGUI("pinagpaliban");
+	}
+	
+	public static void println(String in)
+	{
+		System.out.println("" + in);	
 	}
 }

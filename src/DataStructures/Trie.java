@@ -13,7 +13,10 @@ package DataStructures;
 import java.util.*;
 import MorphAnalyzer.*;
 import java.io.Serializable;
-public class Trie<E> implements Serializable{
+
+
+public class Trie<E> implements Serializable
+{
     protected AbstractTrieImpl<E> impl = null;
     protected Vector<TrieListener> v = null;
 
@@ -45,13 +48,42 @@ public class Trie<E> implements Serializable{
     public boolean lookup(String s){
         return impl.lookup(s);
     }
-    public Vector<String> getAllPossibleMatch(String s) {
+    
+    /**
+     * Still don't know what this thing does.
+     * @param s
+     * Minsan normal yung s at minsan naka reverse.
+     * @return
+     * A Vector<String> getAllPossibleMatch(String s) is also returned. So it returns a vector of strings-ish?
+     */
+    public Vector<String> getAllPossibleMatch(String s) 
+    {
+    	println("getAllPossibleMatch("+ s +")");
+    	
+    	if (impl.getAllPossibleMatch(s).size() > 0 ) {
+    		println("impl: " + impl.getAllPossibleMatch(s).firstElement());
+    	}
+    	
         return impl.getAllPossibleMatch(s);
     }
-    public String getGreatestCommon(String s) {
+    
+    /**
+     * Looks for the longest common substring w/ at most 1 vowel.
+     * @param s
+     * Original input string
+     * @return
+     * A the longest common substring in String s
+     */
+    public String getGreatestCommon(String s) 
+    {
+    	println("Input s for getGreatestCommon: " + s);	
+    	
         DefaultTrieNode node = impl.traverse(s);
         if (node.isEnd())
+        {
+        	println("getGreatestCommon s.substring[1]: " + s.substring(0,node.getDepth( )));
             return s.substring(0,node.getDepth());
+        }
         else {
             DefaultTrieNode parent;
             parent = node.getParent();
@@ -62,9 +94,14 @@ public class Trie<E> implements Serializable{
                     parent = parent.getParent();
             }
             if (parent != null)
+            {
+            	println("getGreatestCommon s.substring[2]: " + s.substring(0,parent.getDepth()));
                 return s.substring(0,parent.getDepth());
-            else 
+            }
+            else
+            {
                 return "";
+            }
         }
     }
     public CountingTable getObjectList(String s) {
@@ -151,5 +188,14 @@ public class Trie<E> implements Serializable{
     }     
     protected String appendPartialMatch(String s, char c) {
         return s + c;
+    }
+    
+    /**
+     * When you are too lazy to type System.out.println()
+     * @param input
+     */
+    public static void println(String input)
+    {
+    	System.out.println("" + input);
     }
 }

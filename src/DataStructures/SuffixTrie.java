@@ -40,16 +40,18 @@ public class SuffixTrie<E> extends Trie<E> implements Serializable{
      * @return
      * A vector which contains the suffixes to be removed.
      * It gets the string then reverses it then somehow you get the suffix through some form of magic.
+     * 
+     * It comes from return impl.getAllPossibleMatch(s) sa Trie.java
+     * Which also comes from AbstractTrieImpl.java.x
      */
     public Vector<String> getAllPossibleMatch(String s) 
     {
     	Vector<String> v = new Vector();
         // if s = pinaglaban
         s = new StringBuffer(s).reverse().toString(); //s = nabalganip 
-        println("\n s = new StringBuffer: " + s + "\n");
+        
         Vector<String> v2= super.getAllPossibleMatch(s); // v2[0] = "na"
-        println("v2.capacity: " + v2.capacity());
-        println("\n v2 = super.getAll: " + v2.get(0) + "\n");
+        
         for(int i=0;i<v2.size();i++)
         {
         	println("v2.elementAt(i)).toString(): " + v2.elementAt(i).toString());
@@ -59,7 +61,10 @@ public class SuffixTrie<E> extends Trie<E> implements Serializable{
         // Returns a vector which contains the suffixes to be removed
         return v;
     }
+    
+    
     public String getGreatestCommon(String s) {
+    	println("someone just loaded me");
         s = new StringBuffer(s).reverse().toString();
         return new StringBuffer(super.getGreatestCommon(s)).reverse().toString();
     }

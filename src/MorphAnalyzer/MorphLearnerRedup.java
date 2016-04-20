@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 // Solomon's Model
 public class MorphLearnerRedup implements Serializable {
-    protected Trie popTrie,posTrie,prefixTrie, vowelChangeTrie;
+    protected Trie popTrie, posTrie, prefixTrie, vowelChangeTrie;
     protected SuffixTrie suffixTrie;
     protected Vector<RewriteRule> infixList;
     protected RuleExtractorContext rec;
@@ -68,8 +68,16 @@ public class MorphLearnerRedup implements Serializable {
         prefixTrie.store("pagki");
         prefixTrie.store("pagkiki");
         prefixTrie.store("pagkikipag");
-        prefixTrie.store("pinagpa"); // added this
-        suffixTrie.store("an");
+        /*
+         * Add NEW prefixTrie.store here 
+         */
+        prefixTrie.store("pinagpa"); // W/ this = pinagpaliban -> liban
+        prefixTrie.store("ipinagpa"); // w/ this = ?
+        //
+        /*
+         * Start of suffixTrie.stores
+         */
+        suffixTrie.store("an"); // has a lot of issues 
         suffixTrie.store("in");
         suffixTrie.store("han");
         suffixTrie.store("hin");        
@@ -267,7 +275,8 @@ public class MorphLearnerRedup implements Serializable {
      * Word to be morphologically analyzed
      * @return
      * A string that consists of the root of the input string
-     * 
+     * @laurenz
+     * yes nandito ka
      * 
      */
     public MAResult analyzeMultipleMod(String orig) 
@@ -391,6 +400,12 @@ public class MorphLearnerRedup implements Serializable {
         }
         return maxResult;
     }    
+    
+    /**
+     * You are lost. Go to analyzeMultipleMod(String orig)
+     * @param orig
+     * @return
+     */
     public MAResult analyzeMultipleModWithSemantic2(String orig) {
         int i,j,k,l;
         Vector<String> prefixes;

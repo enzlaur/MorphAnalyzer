@@ -25,7 +25,7 @@ public abstract class AbstractTrieImpl<E> implements Serializable {
     public abstract CountingTable getObjectList(String s);
     public abstract Vector<String> getAllPossibleMatch(String s);
     
-    public void store(String s) {
+    public void store(String s) {    	
         store(s, null);
     }
     public void remove(String s) {
