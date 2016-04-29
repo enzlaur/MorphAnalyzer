@@ -19,7 +19,8 @@ public class MorphLearnerRedup implements Serializable {
     private double posConfidence, popConfidence,vowelConfidence;
     public DBLexicon lex;
     
-    public MorphLearnerRedup() throws Exception{
+    public MorphLearnerRedup() throws Exception
+    {
 //        System.out.println("Solomon's Infix and Redup Model");
         lex = new DBLexicon();
         Trie popTrie = new Trie(new DefaultTrieImpl()), prefixTrie = new Trie(new DefaultTrieImpl());
